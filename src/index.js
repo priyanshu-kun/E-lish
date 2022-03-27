@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 
 // Your web app's Firebase configuration

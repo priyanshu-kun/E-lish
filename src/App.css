@@ -188,7 +188,6 @@ background: rgba(0, 0, 0, 0) linear-gradient(92.88deg, #5927E9 9.16%, rgb(86, 67
   height: auto;
   justify-content: center;
   left: 50%;
-  max-height: 250px;
   min-height: 160px;
   padding: 10px;
   overflow: hidden;
@@ -246,4 +245,68 @@ background: rgba(0, 0, 0, 0) linear-gradient(92.88deg, #5927E9 9.16%, rgb(86, 67
   margin-top: 10px;
   text-shadow: rgba(0,0,0,.25) 0 3px 8px;
   width: 90%;
+}
+
+
+
+.updateBtn {
+  margin-top: 10px;
+  margin-right: 8px;
+  float: right;
+  background: none;
+  color: #fff;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+
+.updateBtn:hover {
+  background: rgb(255, 255, 255, 0.1);
+}
+
+
+
+.mic_data_container {
+  position: absolute;
+  background-color: black;
+  color: white;
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1rem;
+  bottom: 0;
+  padding: 10px 0;
+  left: 0;
+}
+
+
+.suggetion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.suggetion-heading {
+color: black;
+    font-size: 1rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+
+
+.suggetion .wrong__words {
+
+    color: red !important;
+    font-weight: 700;
+    font-size: 0.8rem;
 }
