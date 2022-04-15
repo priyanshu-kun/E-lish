@@ -1,0 +1,24 @@
+
+.heading {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.heading p:nth-child(1) {
+    margin: 30px auto 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+
+.heading p:nth-child(2) {
+    margin: 0 auto 30px auto;
+    font-size: 1.2rem;
+    font-weight: 900;
+    opacity: 0.6;
+    text-align: center;
+    color: rgb(238, 238, 238);
+    text-decoration: underline;
+}

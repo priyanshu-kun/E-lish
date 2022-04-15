@@ -1,21 +1,23 @@
 {
-  "name": "E-glish",
-  "version": "0.0.1",
-  "manifest_version": 3,
-  "action": {
-    "default_popup": "index.html",
-    "default_icon": {
-      "64": "./logo/logo_64.png",
-      "128": "./logo/logo_128.png",
-      "256": "./logo/logo_256.png"
-    }
-  },
+  "manifest_version": 2,
+  "name": "Vision",
+  "version": "1.0.0",
+  "description": "It's a main goal reaminder board for a person",
   "icons": {
-    "64": "./logo/logo_64.png",
-    "128": "./logo/logo_128.png",
-    "257": "./logo/logo_256.png"
+    "64": "logo/logo_64.png"
   },
-  "permissions": [
-    "activeTab"
-  ]
+  "sidebar_action": {
+    "default_icon": {
+    "128": "logo/logo_128.png"
+    },
+    "background": {
+      "scripts": [
+        "background.js"
+      ],
+      "persistent": false
+    },
+    "default_title": "App",
+    "default_panel": "index.html",
+    "open_at_install": true
+  }
 }

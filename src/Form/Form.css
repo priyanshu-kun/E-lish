@@ -1,0 +1,88 @@
+
+
+.content__input textarea {
+  border-radius: 10px;
+  display: block;
+  /* height: 100%; */
+  height: 160px;
+  padding: 20px;
+  width: 70%;
+  border: 2px solid rgb(255, 255, 255, 0.1);
+  background-color: #1a1a1a;
+  color: rgb(255, 255, 255);
+}
+
+
+.content__input span {
+  margin: 10px 0;
+  color: rgb(29, 29, 29);
+  font-weight: bold;
+}
+
+
+
+
+
+.submitBtn {
+  background: transparent linear-gradient(92.88deg,#5927e9 9.16%,#5643cc 43.89%,#673fd7 64.72%) repeat scroll 0 0;
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 2px 1px 5px rgba(0,0,0,.1),1px 2px 5px rgba(0,0,0,.3);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 60px;
+  margin-top: 10px;
+  text-shadow: rgba(0,0,0,.25) 0 3px 8px;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+
+
+.suggetion {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.suggetion-heading {
+color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+
+
+.suggetion .wrong__words {
+
+    color: red !important;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+
+.form__heading {
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-align: center;
+  width: 60%;
+  opacity: 0.3;
+}
+
+
+.suggested-words {
+  color: #bebcbc !important;
+}

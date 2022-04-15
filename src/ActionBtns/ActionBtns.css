@@ -1,0 +1,52 @@
+
+
+.actions__btns {
+  height: 160px;
+  /* background-color: red; */
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99999;
+}
+
+
+.actions__btns button {
+  height: 60px;
+  cursor: pointer;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 100%;
+background: rgba(0, 0, 0, 0) linear-gradient(92.88deg, #5927E9 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%) repeat scroll 0% 0%;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+  box-shadow:inset 2px 1px 5px rgba(0, 0, 0, 0.1), 1px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.actions__btns button svg {
+  transition: all 0.5s ease;
+  transform: rotate(0deg);
+}
+
+.actions__btns button.active__action__btn svg {
+  transform: rotate(135deg);
+}
+
+
+.actions__btns button:hover {
+  border-radius: 10px;
+}
+
+
+.actions__btn__icon__style {
+  color: #fff;
+  width: 16px;
+  height: 16px;
+}
