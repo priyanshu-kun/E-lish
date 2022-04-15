@@ -3,8 +3,9 @@ import axios from "axios"
 import { v4 as uuidv4 } from "uuid"
 import loader from "../assets/loader.gif"
 import "./Form.css"
+import SendMessage from '../twilio'
 
-function Form({addTaskLoading, setAddTaskLoading, addDoc, collection, formData, invalidGrammer, getSpellCheck, db, setToogleForm, setFormData, fetchDataFromFirebase, setInvalidGrammer }) {
+function Form({addTaskLoading, setAddTaskLoading, addDoc, collection, formData, invalidGrammer, getSpellCheck, db, setToogleForm, setFormData,  setInvalidGrammer }) {
     return (
         <>
             <h1 className='form__heading'>Enter your sentence below</h1>
@@ -55,6 +56,7 @@ function Form({addTaskLoading, setAddTaskLoading, addDoc, collection, formData, 
                                     isKnown: false,
                                     hindiTranslation: response.data[0].translations[0].text,
                                 }).then(() => {
+                                    SendMessage(`Your Friend Learn this new english sentence: ${formData} Hindi: ${response.data[0].translations[0].text}`,"6397293480")
                                     setToogleForm(false);
                                     setFormData("");
                                     setInvalidGrammer([])

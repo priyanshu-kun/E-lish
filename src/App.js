@@ -22,6 +22,7 @@ function App({ fireBaseApp }) {
   const [isContentEdit, setIsContentEdit] = useState(false)
   const [editedContent, setEditedContent] = useState("")
   const [invalidGrammer, setInvalidGrammer] = useState([])
+  const [urlInput, setUrlInput] = useState("")
   const [formData, setFormData] = useState("");
 
   const db = getFirestore(fireBaseApp);
@@ -82,7 +83,51 @@ function App({ fireBaseApp }) {
 
 
   async function doTranscribe() {
-      alert("booo boo oboo")
+    try {
+      if (urlInput === "") {
+        alert("Input field cannot be empty")
+        return;
+      }
+      const accessTokenRes = await axios({
+        url: "/oauth2/token:generate",
+        method: "post",
+        baseURL: "https://api.symbl.ai",
+        headers: {
+          "accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        data: {
+          "type": "application",
+          "appId": `${process.env.REACT_APP_SYMBOL_APP_ID}`,
+          "appSecret": `${process.env.REACT_APP_SYMBOL_APP_SECRET}`
+        }
+      })
+
+      const conversationIdRes = await axios({
+        url: '/process/audio/url',
+        method: 'post', // default
+        baseURL: 'https://api.symbl.ai/v1',
+        headers: {
+          'Authorization': `Bearer ${accessTokenRes.data.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        data: {
+          "url": urlInput,
+          "name": "E-lish",
+          "confidenceThreshold": 0.6,
+          "webhookUrl": "http://localhost:9000/api"
+        },
+      })
+
+
+
+      console.log(accessTokenRes.data.accessToken)
+      console.log(conversationIdRes.data.conversationId);
+
+    }
+    catch (e) {
+      console.log(e.message)
+    }
   }
 
 
@@ -124,14 +169,14 @@ function App({ fireBaseApp }) {
       </section>
       <ActionBtns toogleVideoForm={toogleVideoForm} setToogleVideoForm={setToogleVideoForm} toogleForm={toogleForm} setToogleForm={setToogleForm} />
       <div className={`content__input ${toogleForm && "active_input"}`}>
-        <Form  addTaskLoading={addTaskLoading} setAddTaskLoading={setAddTaskLoading} addDoc={addDoc} collection={collection} formData={formData} invalidGrammer={invalidGrammer} getSpellCheck={getSpellCheck} db={db} setToogleForm={setToogleForm} setFormData={setFormData} fetchDataFromFirebase={fetchDataFromFirebase} setInvalidGrammer={setInvalidGrammer} />
+        <Form addTaskLoading={addTaskLoading} setAddTaskLoading={setAddTaskLoading} addDoc={addDoc} collection={collection} formData={formData} invalidGrammer={invalidGrammer} getSpellCheck={getSpellCheck} db={db} setToogleForm={setToogleForm} setFormData={setFormData} fetchDataFromFirebase={fetchDataFromFirebase} setInvalidGrammer={setInvalidGrammer} />
       </div>
       <div className={`content__input ${toogleVideoForm && "active_input"}`}>
 
-          <div className="video__url__note"><span style={{color: "#fff", marginRight: "10px"}}>Note</span>If you put a video url below then you could transcribe the whole video into your preferable language.</div>
+        <div className="video__url__note"><span style={{ color: "#fff", marginRight: "10px" }}>Note</span>If you put a video url below then you could transcribe the whole video into your preferable language, And link must be mp4 format.</div>
 
-        <div style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
-          <input className="url__input" type="url" placeholder="eg. https://some-video-url.mp4" />
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+          <input value={urlInput} onChange={(e) => setUrlInput(e.target.value)} className="url__input" type="url" placeholder="eg. https://some-video-url.mp4" />
           <button onClick={doTranscribe} className="transcribe">Transcribe</button>
         </div>
       </div>
