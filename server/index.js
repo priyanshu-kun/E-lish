@@ -1,4 +1,4 @@
-const { request, response } = require("express");
+require("dotenv").config()
 const express = require("express");
 const app = express()
 app.use(express.static("public"))
@@ -19,8 +19,8 @@ app.post("/api/message", async (req, res) => {
     try {
         const {message, no} = req.body
         console.log(req.body)
-        const accountSid = "ACbaf2f26f0b25fb9c7a51a5c681c0b5cc";
-        const authToken = "9d63c0f3d60d4f45d14e55bddc164b39";
+        const accountSid = process.env.ACCOUNT_SID;
+        const authToken = process.env.AUTH_TOKEN;
         const client = require('twilio')(accountSid, authToken, {
             lazyLoading: true
         });

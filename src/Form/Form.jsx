@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import axios from "axios"
 import { v4 as uuidv4 } from "uuid"
 import loader from "../assets/loader.gif"
@@ -6,16 +6,19 @@ import "./Form.css"
 import SendMessage from '../twilio'
 
 function Form({addTaskLoading, setAddTaskLoading, addDoc, collection, formData, invalidGrammer, getSpellCheck, db, setToogleForm, setFormData,  setInvalidGrammer }) {
+    const [numberInput, setNumberInput] = useState("")
     return (
         <>
             <h1 className='form__heading'>Enter your sentence below</h1>
             <textarea onChange={(e) => {
                 setFormData(e.target.value);
             }} value={formData} type="text" placeholder="Here..."></textarea>
+            <input style={{marginTop: "10px"}} value={numberInput} onChange={(e) => setNumberInput(e.target.value)} className="url__input" type="url" placeholder="Ph.no - eg. 09034995549" />
+
             <button type="button" onClick={async (e) => {
                 // save the document here
                 e.preventDefault();
-                if (formData === "") {
+                if (formData === "" && numberInput.length === 0) {
                     return alert("plase put something here!!!")
                 }
                 try {
@@ -56,7 +59,7 @@ function Form({addTaskLoading, setAddTaskLoading, addDoc, collection, formData, 
                                     isKnown: false,
                                     hindiTranslation: response.data[0].translations[0].text,
                                 }).then(() => {
-                                    SendMessage(`Your Friend Learn this new english sentence: ${formData} Hindi: ${response.data[0].translations[0].text}`,"6397293480")
+                                    SendMessage(`Your Friend Learn this new english sentence: ${formData} Hindi: ${response.data[0].translations[0].text}`,numberInput)
                                     setToogleForm(false);
                                     setFormData("");
                                     setInvalidGrammer([])
