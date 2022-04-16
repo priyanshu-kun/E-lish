@@ -12,6 +12,14 @@ In the project directory, you can run:
 REACT_APP_CLOUD_TRANSLATION=<Speech to text Token>
 REACT_APP_URI=<Text Translation URL>
 REACT_APP_SPELL_CHECK=<Bing Web Search API TOKEN>
+REACT_APP_SYMBOL_APP_ID=<ID>
+REACT_APP_SYMBOL_APP_SECRET=<SECRET>
+  ```
+  > Inside Server -
+   ```
+   TWILIO=accountSid
+   TWILIO=authToken
+   TWILIO_NO=<+17898794857349>
   ```
   
  After that go to `chrome://extensions/` URL on google chrome and click **Developer Mode** toogle button after clicking the button only thing you have to do is build and load `build` folder into google chrome.
